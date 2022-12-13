@@ -1,12 +1,7 @@
 ﻿// DAY 1
 
-internal class CalorieCounting
+public class CalorieCounting
 {
-    static void Main(string[] args)
-    {
-        System.Console.WriteLine(FindTopThree());
-    }
-
     static int FindTopThree()
     {
         int maxPtr1 = 0;
