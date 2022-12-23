@@ -5,7 +5,7 @@ class RucksackReorganization
 {
     static void Main(string[] args)
     {
-        var r = Solution();
+        var r = GetSumByThreeGroups();
         System.Console.WriteLine($"Sum:{r}");
     }
 
@@ -71,7 +71,7 @@ class RucksackReorganization
         }
     }
 
-    static int Solution()
+    static int GetSumByLine()
     {
         var matches = new List<char>();
         foreach (string line in System.IO.File.ReadLines(@"inputDay3.txt"))
@@ -90,13 +90,6 @@ class RucksackReorganization
                     map[i] = line[i];
                 }
             }
-
-            // foreach (var item in map)
-            // {
-            //     global::System.Console.Write(item.Value);
-            // }
-            // System.Console.WriteLine();
-
             // Second compartment
             for (int i = median; i < len; i++)
             {
@@ -116,6 +109,79 @@ class RucksackReorganization
             global::System.Console.WriteLine($"Match: {n}");
             int priority = mc.Priorities.GetValueOrDefault(n);
             sum += priority;
+        }
+
+        return sum;
+    }
+
+    static int GetSumByThreeGroups()
+    {
+        int sum = 0;
+        var mc = new RucksackReorganization();
+        var lines = new List<string>();
+        foreach (string line in System.IO.File.ReadLines(@"inputDay3.txt"))
+        {
+            lines.Add(line);
+        }
+
+        int i = 2; // first group 
+        while (i < lines.Count)
+        {
+            var groupMap = new Dictionary<int, char>();
+            var groupMap1 = new Dictionary<int, char>();
+            var groupMap2 = new Dictionary<int, char>();
+            var groupMapCount = new Dictionary<char, int>();
+
+            var line1 = lines[i - 2];
+            var line2 = lines[i - 1];
+            var line3 = lines[i];
+            int j;
+
+            for (j = 0; j < line1.Length; j++)
+            {
+                char item = line1[j];
+                if (!groupMap.ContainsValue(item))
+                {
+                    groupMap[j] = item;
+                    groupMap1[j] = item;
+                    groupMap2[j] = item;
+                    groupMapCount[item] = 1;
+                }
+            }
+
+            for (j = 0; j < line2.Length; j++)
+            {
+                char item = line2[j];
+                if (groupMap1.ContainsValue(item))
+                {
+                    groupMapCount[item]++;
+                    var key = groupMap1.FirstOrDefault(x => x.Value == item).Key;
+                    groupMap1.Remove(key);
+                }
+            }
+
+            for (j = 0; j < line3.Length; j++)
+            {
+                char item = line3[j];
+                if (groupMap2.ContainsValue(item))
+                {
+                    groupMapCount[item]++;
+                    var key = groupMap2.FirstOrDefault(x => x.Value == item).Key;
+                    groupMap2.Remove(key);
+                }
+            }
+
+            foreach (var item in groupMapCount)
+            {
+                if (item.Value == 3)
+                {
+                    var key = item.Key;
+                    var priority = mc.Priorities.GetValueOrDefault(key);
+                    sum += priority;
+                }
+            }
+
+            i += 3;
         }
 
         return sum;
