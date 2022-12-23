@@ -2,11 +2,11 @@
 
 public class RockPaperScissors
 {
-    static void Main(string[] args)
-    {
-        int r = Part2();
-        System.Console.WriteLine(r);
-    }
+    // static void Main(string[] args)
+    // {
+    //     int r = Part2();
+    //     System.Console.WriteLine(r);
+    // }
 
     static int StrategyGuide()
     {
