@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 class RucksackReorganization
 {
-    static void Main(string[] args)
-    {
-        var r = GetSumByThreeGroups();
-        System.Console.WriteLine($"Sum:{r}");
-    }
+    // static void Main(string[] args)
+    // {
+    //     var r = GetSumByThreeGroups();
+    //     System.Console.WriteLine($"Sum:{r}");
+    // }
 
     Dictionary<char, int> Priorities
     {
