@@ -2,13 +2,13 @@ using System;
 
 class CampCleanup
 {
-    static void Main(string[] args)
-    {
-        // int r = Part1();
-        // Console.WriteLine("Count: " + r);
-        int r = Part2();
-        Console.WriteLine("Overlap: " + r);
-    }
+    // static void Main(string[] args)
+    // {
+    //     // int r = Part1();
+    //     // Console.WriteLine("Count: " + r);
+    //     int r = Part2();
+    //     Console.WriteLine("Overlap: " + r);
+    // }
 
     static int Part1()
     {
@@ -64,7 +64,7 @@ class CampCleanup
                 count++;
             }
             // find min and max
-            System.Console.WriteLine($"{numsInt[0]} {numsInt[1]} {numsInt[2]} {numsInt[3]}");
+            //System.Console.WriteLine($"{numsInt[0]} {numsInt[1]} {numsInt[2]} {numsInt[3]}");
         }
         return count;
     }
