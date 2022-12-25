@@ -3,10 +3,10 @@ ANSWER: VCTFTJQCG
 */
 class SupplyStacks
 {
-    static void Main(string[] args)
-    {
-        Part2();
-    }
+    // static void Main(string[] args)
+    // {
+    //     Part2();
+    // }
 
     static void Part1()
     {
